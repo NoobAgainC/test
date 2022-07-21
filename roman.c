@@ -32,8 +32,9 @@ void assign_roman(long lb, long ub, long a);
 
 int main(void)
 {
-    long in;
+    long in = 0;
     int count = 0;
+    printf("Enter a digit to convert to Roman Number: ");
     scanf("%ld", &in);
     
     while (in != 0)
@@ -42,7 +43,7 @@ int main(void)
         in /= 10;
         count++;
     }
-    printf("%s", represent);
+    printf("Roman equivalent of Given digit is: %s\n", represent);
     return 0;
 }
 
@@ -92,14 +93,14 @@ void assign_roman(long lb, long ub, long a)
     }
     else
     {
-        int i = 0;
-        represent[i] = get_roman(ub); 
+        int i = 0, j = 0;
+        if (ub != 0) represent[j++] = get_roman(ub); 
         
-        for (i = 1; i <= (a / lb) - (ub / lb); i++)
+        for (i = 0; i < (a / lb) - (ub / lb); i++)
         {
-            represent[i] = get_roman(lb);
+            represent[j + i] = get_roman(lb);
         }
-        represent[i] = '\0';
+        represent[j + i] = '\0';
     }
 
     strcat(represent, temp);
